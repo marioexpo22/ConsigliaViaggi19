@@ -88,13 +88,13 @@ public class MappaController extends AppCompatActivity implements GoogleMap.OnMa
     public void caricaStruttureSuMappa(){
 
         /** L'OTTENIMENTO DELLE STRUTTURE VA CAMBIATO **/
-        /*elencoStrutture.add(new Struttura("Test1","null","null","null","null",40.914124, 14.147411,"Hotel","null",4.0f));
-        elencoStrutture.add(new Struttura("Test2","null","null","null","null",40.914556, 14.147611,"Ristorante","null", 4.0f));
-        elencoStrutture.add(new Struttura("Test3","null","null","null","null",40.914174, 14.148805,"Attrazione","null", 4.0f));
-        elencoStrutture.add(new Struttura("Test4","null","null","null","null",40.914618, 14.148424,"Hotel","null",5.0f));
-        elencoStrutture.add(new Struttura("Test5","null","null","null","null",40.913287, 14.147921,"Ristorante","null",3.0f));
-        elencoStrutture.add(new Struttura("Test6","null","null","null","null",40.913040, 14.147403,"Attrazione","null",5.0f));
-*/
+        elencoStrutture.add(new Struttura(1,"Test1","null","null","null","null","null",14.147411,40.914124, "Hotel","null",4.0f));
+        elencoStrutture.add(new Struttura(2,"Test2","null","null","null","null","null",14.147611,40.914556, "Ristorante","null", 4.0f));
+        elencoStrutture.add(new Struttura(3,"Test3","null","null","null","null","null",14.148805,40.914174, "Attrazione","null", 4.0f));
+        elencoStrutture.add(new Struttura(4,"Test4","null","null","null","null","null",14.148424,40.914618, "Hotel","null",5.0f));
+        elencoStrutture.add(new Struttura(5,"Test5","null","null","null","null","null",14.147921,40.913287, "Ristorante","null",3.0f));
+        elencoStrutture.add(new Struttura(6,"Test6","null","null","null","null","null",14.147403,40.913040, "Attrazione","null",5.0f));
+
         listaMarker = new ArrayList<>();
 
         for (Struttura struttura : elencoStrutture){
