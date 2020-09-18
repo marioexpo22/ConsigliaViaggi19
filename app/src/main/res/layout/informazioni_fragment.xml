@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/viewInformazioni"
+            android:background="@color/colorBianco"
+
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    <RatingBar
+            android:layout_width="237dp"
+            android:layout_height="43dp"
+            android:id="@+id/valutazioneStrutturaInformazioni"
+
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:transformPivotX="0dp"
+
+            android:layout_marginEnd="151dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewInformazioni"
+            app:layout_constraintStart_toStartOf="@+id/viewInformazioni" android:layout_marginStart="24dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintBottom_toBottomOf="@+id/viewInformazioni" android:layout_marginBottom="516dp"/>
+
+    <TextView
+            android:text="@string/nome_struttura"
+            android:layout_width="364dp"
+            android:layout_height="30dp" android:id="@+id/nomeStrutturaInformazioni"
+            android:textAlignment="textStart" android:textAllCaps="true"
+            android:textSize="24sp"
+            android:textStyle="bold"
+
+            android:layout_marginEnd="26dp" app:layout_constraintEnd_toEndOf="@+id/viewInformazioni"
+            app:layout_constraintStart_toStartOf="@+id/viewInformazioni" android:layout_marginStart="27dp"
+            app:layout_constraintHorizontal_bias="0.666" android:layout_marginBottom="21dp"
+            app:layout_constraintBottom_toTopOf="@+id/valutazioneStrutturaInformazioni"/>
+
+
+    <ScrollView
+            android:layout_width="364dp"
+            android:layout_height="380dp"
+
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewInformazioni"
+            app:layout_constraintStart_toStartOf="@+id/viewInformazioni" android:layout_marginStart="23dp"
+            android:id="@+id/scrollViewInformazioni" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="@+id/viewInformazioni" android:layout_marginBottom="104dp"
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/valutazioneStrutturaInformazioni">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:text="@string/nome_struttura"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/descrizioneStrutturaInformazioni"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp"
+            />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+            android:text="Media recensioni"
+            android:layout_width="121dp"
+            android:layout_height="24dp"
+            android:id="@+id/mediaRecensioni"
+            android:textSize="14sp"
+            android:textStyle="bold"
+
+            android:layout_marginEnd="52dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewInformazioni" android:layout_marginTop="31dp"
+            app:layout_constraintTop_toBottomOf="@+id/nomeStrutturaInformazioni" android:layout_marginBottom="41dp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollViewInformazioni" app:layout_constraintVertical_bias="1.0"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

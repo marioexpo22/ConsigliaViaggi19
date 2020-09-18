@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/viewPosizione"
+            android:background="@color/colorBianco"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"/>
+
+    <TextView
+            android:text="Posizione"
+            android:layout_width="364dp"
+            android:layout_height="30dp"
+            android:id="@+id/titoloPosizione"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textSize="24sp"
+            android:textStyle="bold"
+
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewPosizione"
+            app:layout_constraintStart_toStartOf="@+id/viewPosizione" android:layout_marginStart="23dp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewPosizione" android:layout_marginBottom="636dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toTopOf="@+id/viewPosizione" android:layout_marginTop="65dp"/>
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="213dp"
+            android:layout_height="24dp"
+            android:id="@+id/indirizzoPosizione"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+
+            app:layout_constraintTop_toTopOf="@+id/viewPosizione"
+            android:layout_marginTop="180dp" android:layout_marginEnd="176dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewPosizione"
+            app:layout_constraintBottom_toBottomOf="@+id/viewPosizione" android:layout_marginBottom="533dp"
+            app:layout_constraintStart_toStartOf="@+id/viewPosizione" android:layout_marginStart="23dp"/>
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="215dp"
+            android:layout_height="24dp"
+            android:id="@+id/sitowebPosizione"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+
+            android:layout_marginEnd="176dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewPosizione" app:layout_constraintTop_toTopOf="@+id/viewPosizione"
+            android:layout_marginTop="296dp" app:layout_constraintStart_toStartOf="@+id/viewPosizione"
+            android:layout_marginStart="23dp" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="@+id/viewPosizione" android:layout_marginBottom="411dp"/>
+
+    <TextView
+            android:text="Contatti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contatti"
+            android:textStyle="bold"
+            android:textSize="20sp"
+
+
+            app:layout_constraintTop_toTopOf="@+id/viewPosizione"
+            android:layout_marginTop="139dp" android:layout_marginEnd="337dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewPosizione"
+            app:layout_constraintStart_toStartOf="@+id/viewPosizione" android:layout_marginStart="23dp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewPosizione" android:layout_marginBottom="573dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView
+            android:text="Sito web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sitoweb"
+            android:textStyle="bold"
+            android:textSize="20sp"
+
+            app:layout_constraintTop_toTopOf="@+id/viewPosizione"
+            android:layout_marginTop="258dp" android:layout_marginEnd="334dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewPosizione"
+            app:layout_constraintStart_toStartOf="@+id/viewPosizione" android:layout_marginStart="23dp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewPosizione" android:layout_marginBottom="454dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

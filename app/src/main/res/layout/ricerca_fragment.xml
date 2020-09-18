@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.SchermataRicercaFragment"
+        android:animateLayoutChanges="true">
+
+    <View
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:id="@+id/view"
+            android:background="@color/colorBianco"
+
+
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/mappaGoogle"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
+    <fragment
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/mappaGoogle"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="230dp"
+            android:layout_height="40dp"
+            android:hint="@string/nome_struttura"
+            android:id="@+id/strutturaIn"
+
+            app:layout_constraintBottom_toTopOf="@+id/luogoIn" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="30dp" app:layout_constraintStart_toStartOf="@+id/view"
+            android:layout_marginStart="65dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="230dp"
+            android:layout_height="40dp"
+            android:hint="@string/nome_luogo"
+            android:id="@+id/luogoIn"
+
+            app:layout_constraintTop_toBottomOf="@+id/strutturaIn" app:layout_constraintStart_toStartOf="@+id/view"
+            android:layout_marginStart="65dp"/>
+
+    <ImageButton
+            android:src="@android:drawable/ic_menu_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottoneCerca"
+
+            app:layout_constraintStart_toEndOf="@+id/strutturaIn" android:layout_marginStart="30dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="50dp"/>
+
+    <RatingBar
+            android:layout_width="237dp"
+            android:layout_height="43dp"
+            android:id="@+id/valutazioneLuoghi"
+
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:transformPivotX="0dp"
+
+            android:layout_marginTop="40dp" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="@+id/view" app:layout_constraintTop_toBottomOf="@+id/luogoIn"
+            app:layout_constraintBottom_toBottomOf="@+id/view" android:layout_marginBottom="5dp"/>
+
+    <SeekBar
+            android:layout_width="158dp"
+            android:layout_height="26dp"
+            android:id="@+id/distanza"
+
+            android:layout_marginEnd="28dp" app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" android:layout_marginTop="160dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view" android:layout_marginBottom="14dp"
+            app:layout_constraintVertical_bias="0.0" app:layout_constraintStart_toStartOf="@+id/view"
+            android:layout_marginStart="225dp"/>
+
+    <ImageButton
+            android:src="@drawable/abc_vector_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottoneHome"
+
+            android:layout_marginTop="7dp" app:layout_constraintTop_toTopOf="@+id/view"
+            android:layout_marginEnd="356dp" app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view" android:layout_marginStart="7dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view" android:layout_marginBottom="150dp"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"/>
+
+    <TextView
+            android:text="@string/distanza_seekbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/distanzaProgresso"
+
+            android:layout_marginTop="132dp" app:layout_constraintTop_toTopOf="@+id/view"
+            android:layout_marginEnd="75dp" app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view" android:layout_marginStart="278dp"
+            android:layout_marginBottom="9dp" app:layout_constraintBottom_toTopOf="@+id/distanza"
+            app:layout_constraintHorizontal_bias="0.529" app:layout_constraintVertical_bias="1.0"/>
+
+    <ImageButton
+            android:src="@android:drawable/ic_menu_mylocation"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:id="@+id/miaPosizione"
+
+            app:layout_constraintTop_toTopOf="@+id/mappaGoogle" android:layout_marginTop="252dp"
+            app:layout_constraintStart_toStartOf="@+id/mappaGoogle" android:layout_marginStart="337dp"
+            android:layout_marginEnd="18dp" app:layout_constraintEnd_toEndOf="@+id/mappaGoogle"
+            app:layout_constraintHorizontal_bias="0.777" android:layout_marginBottom="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/previewStruttura"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/previewStruttura"
+            android:background="@color/colorPrimary"
+            android:visibility="gone"
+
+            app:layout_constraintTop_toTopOf="@+id/mappaGoogle" app:layout_constraintStart_toStartOf="@+id/mappaGoogle"
+            app:layout_constraintEnd_toEndOf="@+id/mappaGoogle" android:layout_marginTop="412dp"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintBottom_toBottomOf="@+id/mappaGoogle"
+            app:layout_constraintVertical_bias="1.0"/>
+
+    <ImageView
+            android:layout_width="148dp"
+            android:layout_height="129dp"
+            android:src="@drawable/placeholder"
+            android:id="@+id/immagineStrutturaPreview"
+            android:visibility="gone"
+
+            app:layout_constraintTop_toTopOf="@+id/previewStruttura"
+            android:layout_marginTop="38dp" android:layout_marginEnd="247dp"
+            app:layout_constraintEnd_toEndOf="@+id/previewStruttura"
+            app:layout_constraintBottom_toBottomOf="@+id/previewStruttura" android:layout_marginBottom="32dp"
+            app:layout_constraintStart_toStartOf="@+id/previewStruttura" android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="Nome struttura"
+            android:layout_width="144dp"
+            android:layout_height="24dp"
+            android:id="@+id/nomeStrutturaPreview"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:visibility="gone"
+
+            app:layout_constraintTop_toTopOf="@+id/previewStruttura"
+            android:layout_marginTop="38dp" android:layout_marginEnd="86dp"
+            app:layout_constraintEnd_toEndOf="@+id/previewStruttura"
+            app:layout_constraintBottom_toBottomOf="@+id/previewStruttura" android:layout_marginBottom="137dp"
+            android:layout_marginStart="17dp" app:layout_constraintStart_toEndOf="@+id/immagineStrutturaPreview"/>
+
+    <TextView
+            android:text="Tipo struttura"
+            android:layout_width="101dp"
+            android:layout_height="23dp"
+            android:textSize="16sp"
+            android:id="@+id/tipoStrutturaPreview"
+            android:visibility="gone"
+
+            android:layout_marginStart="17dp" app:layout_constraintStart_toEndOf="@+id/immagineStrutturaPreview"
+            app:layout_constraintTop_toBottomOf="@+id/nomeStrutturaPreview" app:layout_constraintBottom_toBottomOf="@+id/previewStruttura"
+            android:layout_marginBottom="115dp" android:layout_marginEnd="128dp"
+            app:layout_constraintEnd_toEndOf="@+id/previewStruttura" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"/>
+
+    <RatingBar
+            android:layout_width="234dp"
+            android:layout_height="42dp"
+            android:id="@+id/valutazioneLuoghiPreview"
+            android:visibility="gone"
+
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:transformPivotX="0dp"
+
+            android:layout_marginStart="9dp" app:layout_constraintStart_toEndOf="@+id/immagineStrutturaPreview"
+            app:layout_constraintBottom_toBottomOf="@+id/previewStruttura" android:layout_marginBottom="64dp"
+            android:layout_marginTop="9dp" app:layout_constraintTop_toBottomOf="@+id/tipoStrutturaPreview"/>
+
+    <Button
+            android:text="Visualizza"
+            android:layout_width="170dp"
+            android:layout_height="42dp"
+            android:id="@+id/visualizzaStrutturaPreviewButton"
+            android:visibility="gone"
+
+            android:layout_marginTop="5dp" app:layout_constraintTop_toBottomOf="@+id/valutazioneLuoghiPreview"
+            android:layout_marginStart="37dp" app:layout_constraintStart_toEndOf="@+id/immagineStrutturaPreview"
+            app:layout_constraintEnd_toEndOf="@+id/previewStruttura" android:layout_marginEnd="39dp"
+            app:layout_constraintBottom_toBottomOf="@+id/previewStruttura" android:layout_marginBottom="16dp"/>
+
+    <ImageButton
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chiudiPreviewButton"
+            android:visibility="gone"
+
+            app:layout_constraintStart_toStartOf="@+id/previewStruttura" android:layout_marginStart="348dp"
+            app:layout_constraintTop_toTopOf="@+id/previewStruttura" android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/previewStruttura" android:layout_marginBottom="144dp"
+            android:layout_marginEnd="7dp" app:layout_constraintEnd_toEndOf="@+id/previewStruttura"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

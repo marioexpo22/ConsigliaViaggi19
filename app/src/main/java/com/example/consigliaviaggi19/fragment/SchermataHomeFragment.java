@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.consigliaviaggi19.MainActivity;
@@ -12,9 +13,13 @@ import com.example.consigliaviaggi19.controller.HomeController;
 
 public class SchermataHomeFragment extends Fragment {
     public MainActivity mainActivity;
+    public HomeController homeController;
+
     RecyclerView recyclerView1;
     RecyclerView recyclerView2;
     RecyclerView recyclerView3;
+
+    public ImageButton schermataRicercaButtonDaHome;
 
     public static SchermataHomeFragment newInstance(MainActivity mainActivity){ return new SchermataHomeFragment(mainActivity); }
 
@@ -33,14 +38,15 @@ public class SchermataHomeFragment extends Fragment {
         recyclerView2 = getActivity().findViewById(R.id.recyclerView2);
         recyclerView3 = getActivity().findViewById(R.id.recyclerView3);
 
-        createRecyclerView(recyclerView1, "ristorante");
-        createRecyclerView(recyclerView2, "ristorante");
-        createRecyclerView(recyclerView3, "ristorante");
+        homeController = new HomeController(this);
+
+        homeController.createRecyclerView(recyclerView1, "ristorante", mainActivity);
+        homeController.createRecyclerView(recyclerView2, "ristorante", mainActivity);
+        homeController.createRecyclerView(recyclerView3, "ristorante", mainActivity);
+
+        schermataRicercaButtonDaHome = getActivity().findViewById(R.id.schermataRicercaButtonDaHome);
+        homeController.impostaBottoniSchermataHome();
     }
 
-    public void createRecyclerView(RecyclerView recyclerView, String type){
-        HomeController homeController = new HomeController(mainActivity, recyclerView);
-        homeController.execute(type);
-    }
 
 }

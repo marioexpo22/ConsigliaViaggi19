@@ -13,4 +13,22 @@
     <string name="title_activity_structure">StructureActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+
+
+
+
+
+
+
+    <string name="nome_struttura">Struttura</string>
+    <string name="nome_luogo">Luogo</string>
+    <string name="distanza_seekbar">Distanza : 1</string>
+
+    <string name="popup_permessiGPS_titolo">ATTENZIONE!</string>
+    <string name="popup_permessiGPS_messaggio">GPS disabilitato, desideri attivarlo?</string>
+
+    <string name="bottone_conferma">Conferma</string>
+    <string name="bottone_annulla">Annulla</string>
+
+    <string name="map_key" translatable="false">AIzaSyAtw3p3bEk0oZQnRf6Kh3_6_lQAC6MmE-E</string>
 </resources>
