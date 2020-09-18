@@ -3,7 +3,10 @@ package com.example.consigliaviaggi19.controller;
 import android.annotation.SuppressLint;
 import android.widget.SeekBar;
 import android.widget.Toast;
+import com.example.consigliaviaggi19.R;
+import com.example.consigliaviaggi19.fragment.SchermataHomeFragment;
 import com.example.consigliaviaggi19.fragment.SchermataRicercaFragment;
+import com.example.consigliaviaggi19.fragment.SchermataStrutturaFragment;
 
 import java.util.Map;
 
@@ -61,7 +64,9 @@ public class RicercaController {
     }
 
     public void indietroPremuto(){
-        Toast.makeText(schermataRicercaFragment.getActivity(),"Indietro premuto", Toast.LENGTH_SHORT).show();
+        schermataRicercaFragment.mainActivity.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, SchermataHomeFragment.newInstance(schermataRicercaFragment.mainActivity))
+                .commitNow();
     }
 
 
