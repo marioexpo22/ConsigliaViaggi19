@@ -21,6 +21,7 @@
             android:layout_height="43dp"
             android:id="@+id/valutazioneStrutturaInformazioni"
 
+            android:progressTint="@color/colorOro" android:secondaryProgressTint="@color/colorOro"
             android:numStars="5"
             android:stepSize="0.5"
             android:scaleX="0.8"
@@ -39,6 +40,7 @@
             android:layout_height="30dp" android:id="@+id/nomeStrutturaInformazioni"
             android:textAlignment="textStart" android:textAllCaps="true"
             android:textSize="24sp"
+            android:textColor="@color/colorNero"
             android:textStyle="bold"
 
             android:layout_marginEnd="26dp" app:layout_constraintEnd_toEndOf="@+id/viewInformazioni"
@@ -62,7 +64,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
             <TextView
                     android:text="@string/nome_struttura"
                     android:layout_width="match_parent"
@@ -70,10 +71,8 @@
                     android:id="@+id/descrizioneStrutturaInformazioni"
                     android:textAlignment="textStart"
                     android:textSize="18sp"
-            />
-
+                    android:textColor="@color/colorNero"/>
         </LinearLayout>
-
     </ScrollView>
 
     <TextView
@@ -83,6 +82,7 @@
             android:id="@+id/mediaRecensioni"
             android:textSize="14sp"
             android:textStyle="bold"
+            android:textColor="@color/colorNero"
 
             android:layout_marginEnd="52dp"
             app:layout_constraintEnd_toEndOf="@+id/viewInformazioni" android:layout_marginTop="31dp"

@@ -40,9 +40,9 @@ public class SchermataHomeFragment extends Fragment {
 
         homeController = new HomeController(this);
 
-        homeController.createRecyclerView(recyclerView1, "ristorante", mainActivity);
+        /*homeController.createRecyclerView(recyclerView1, "ristorante", mainActivity);
         homeController.createRecyclerView(recyclerView2, "ristorante", mainActivity);
-        homeController.createRecyclerView(recyclerView3, "ristorante", mainActivity);
+        homeController.createRecyclerView(recyclerView3, "ristorante", mainActivity);*/
 
         schermataRicercaButtonDaHome = getActivity().findViewById(R.id.schermataRicercaButtonDaHome);
         homeController.impostaBottoniSchermataHome();

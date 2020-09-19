@@ -23,6 +23,8 @@
     <string name="nome_struttura">Struttura</string>
     <string name="nome_luogo">Luogo</string>
     <string name="distanza_seekbar">Distanza : 1</string>
+    <string name="tipo_struttura">Tipo Struttura</string>
+    <string name="visualizza">Visualizza</string>
 
     <string name="popup_permessiGPS_titolo">ATTENZIONE!</string>
     <string name="popup_permessiGPS_messaggio">GPS disabilitato, desideri attivarlo?</string>

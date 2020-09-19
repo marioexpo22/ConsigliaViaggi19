@@ -25,16 +25,15 @@
             android:layout_height="0dp"
 
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/immagineStruttura"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/immagineStruttura"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.tabs.TabLayout
                 android:id="@+id/sezioniStruttura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorPrimary"
+                app:tabTextColor="@color/colorBianco"/>
 
     </androidx.viewpager.widget.ViewPager>
 
@@ -44,10 +43,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/ricercaStrutturaButton"
 
-            app:layout_constraintTop_toTopOf="@+id/immagineStruttura" android:layout_marginTop="16dp"
-            android:layout_marginEnd="347dp" app:layout_constraintEnd_toEndOf="@+id/immagineStruttura"
-            app:layout_constraintBottom_toBottomOf="@+id/immagineStruttura" android:layout_marginBottom="92dp"
-            app:layout_constraintStart_toStartOf="@+id/immagineStruttura" android:layout_marginStart="17dp"/>
+            android:layout_marginBottom="101dp"
+            app:layout_constraintBottom_toTopOf="@+id/viewPager" android:layout_marginEnd="356dp"
+            app:layout_constraintEnd_toEndOf="@+id/immagineStruttura"
+            app:layout_constraintTop_toTopOf="@+id/immagineStruttura" android:layout_marginTop="7dp"
+            app:layout_constraintStart_toStartOf="@+id/immagineStruttura" android:layout_marginStart="8dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
