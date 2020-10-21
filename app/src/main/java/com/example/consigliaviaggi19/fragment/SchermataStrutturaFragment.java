@@ -41,7 +41,7 @@ public class SchermataStrutturaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        sectionsPagerAdapter = new SectionsPagerAdapter(getContext(), mainActivity.getSupportFragmentManager(), strutturaDaCaricare);
+        sectionsPagerAdapter = new SectionsPagerAdapter(getContext(), mainActivity.getSupportFragmentManager(), strutturaDaCaricare, mainActivity);
         return inflater.inflate(R.layout.struttura_fragment, container, false);
     }
 

@@ -8,8 +8,8 @@ public class Struttura {
     public String numeroDiTelefono;
     public String indirizzo;
     public String immagineStruttura;
-    public double longitudine;
     public double latitudine;
+    public double longitudine;
     public String tipoStruttura;
     public String sitoWeb;
     public float numeroStelle;

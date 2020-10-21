@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import com.example.consigliaviaggi19.MainActivity;
 import com.example.consigliaviaggi19.entity.Struttura;
 import com.example.consigliaviaggi19.fragment.InformazioniStrutturaFragment;
 import com.example.consigliaviaggi19.fragment.PosizioneStrutturaFragment;
@@ -16,13 +17,13 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
     private Context mContext;
     private Struttura strutturaDaCaricare;
+    public MainActivity mainActivity;
 
-    public SectionsPagerAdapter(Context schermataStrutturaFragment, @NonNull FragmentManager fm, Struttura strutturaDaCaricare) {
+    public SectionsPagerAdapter(Context schermataStrutturaFragment, @NonNull FragmentManager fm, Struttura strutturaDaCaricare, MainActivity mainActivity) {
         super(fm);
         mContext = schermataStrutturaFragment;
         this.strutturaDaCaricare = strutturaDaCaricare;
-        System.out.println(this.strutturaDaCaricare.nomeStruttura);
-
+        this.mainActivity = mainActivity;
     }
 
     @Override
@@ -30,14 +31,13 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                System.out.println("STO CREANDO LA PRIMA PAGINA");
                 fragment = new InformazioniStrutturaFragment(strutturaDaCaricare);
                 break;
             case 1:
                 fragment = new PosizioneStrutturaFragment(strutturaDaCaricare);
                 break;
             case 2:
-                fragment = new RecensioniStrutturaFragment(strutturaDaCaricare);
+                fragment = new RecensioniStrutturaFragment(strutturaDaCaricare, mainActivity);
                 break;
         }
         return fragment;
