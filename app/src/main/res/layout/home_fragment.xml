@@ -43,7 +43,7 @@
             android:text="Accedi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
+            android:id="@+id/bottoneAccedi"
 
             android:layout_marginTop="5dp"
             app:layout_constraintTop_toTopOf="@+id/viewHome" android:layout_marginBottom="127dp"

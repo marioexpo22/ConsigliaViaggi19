@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/sfondoSchermataAccedi"
+    />
+
+    <TextView
+            android:text="EFFETTUA L'ACCESSO"
+            android:layout_width="268dp"
+            android:layout_height="40dp"
+            android:id="@+id/titoloAccedi"
+
+            android:textSize="24sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textAlignment="center"
+
+            app:layout_constraintTop_toTopOf="@+id/sfondoSchermataAccedi"
+            android:layout_marginTop="90dp" android:layout_marginEnd="72dp"
+            app:layout_constraintEnd_toEndOf="@+id/sfondoSchermataAccedi"
+            app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataAccedi" android:layout_marginBottom="601dp"
+            app:layout_constraintStart_toStartOf="@+id/sfondoSchermataAccedi" android:layout_marginStart="71dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="264dp"
+            android:layout_height="50dp"
+            android:id="@+id/usernameTextField"
+            android:hint="Username"
+
+            app:layout_constraintTop_toTopOf="@+id/sfondoSchermataAccedi"
+            android:layout_marginTop="182dp" android:layout_marginEnd="74dp"
+            app:layout_constraintEnd_toEndOf="@+id/sfondoSchermataAccedi"
+            app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataAccedi" android:layout_marginBottom="499dp"
+            app:layout_constraintStart_toStartOf="@+id/sfondoSchermataAccedi" android:layout_marginStart="74dp"/>
+
+    <EditText
+            android:layout_width="264dp"
+            android:layout_height="50dp"
+            android:id="@+id/passwordTextField"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:ems="10"
+
+            app:layout_constraintTop_toTopOf="@+id/sfondoSchermataAccedi"
+            android:layout_marginTop="267dp" android:layout_marginEnd="74dp"
+            app:layout_constraintEnd_toEndOf="@+id/sfondoSchermataAccedi"
+            app:layout_constraintStart_toStartOf="@+id/sfondoSchermataAccedi" android:layout_marginStart="74dp"
+            app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataAccedi" android:layout_marginBottom="414dp"/>
+
+    <Button
+            android:text="Accedi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottoneEffettuaAccesso"
+
+            app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataAccedi"
+            android:layout_marginBottom="322dp" android:layout_marginEnd="74dp"
+            app:layout_constraintEnd_toEndOf="@+id/sfondoSchermataAccedi"
+            app:layout_constraintTop_toTopOf="@+id/sfondoSchermataAccedi" android:layout_marginTop="362dp"
+            app:layout_constraintStart_toStartOf="@+id/sfondoSchermataAccedi" android:layout_marginStart="250dp"/>
+
+    <Button
+            android:text="Annulla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottoneAnnullaAccesso"
+
+            app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataAccedi"
+            android:layout_marginBottom="322dp" android:layout_marginEnd="250dp"
+            app:layout_constraintEnd_toEndOf="@+id/sfondoSchermataAccedi"
+            app:layout_constraintTop_toTopOf="@+id/sfondoSchermataAccedi" android:layout_marginTop="362dp"
+            app:layout_constraintStart_toStartOf="@+id/sfondoSchermataAccedi" android:layout_marginStart="74dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,11 +16,12 @@ public class SchermataHomeFragment extends Fragment {
     public MainActivity mainActivity;
     public HomeController homeController;
 
-    RecyclerView recyclerView1;
-    RecyclerView recyclerView2;
-    RecyclerView recyclerView3;
+    private RecyclerView recyclerView1;
+    private RecyclerView recyclerView2;
+    private RecyclerView recyclerView3;
 
     public ImageButton schermataRicercaButtonDaHome;
+    public Button bottoneAccedi;
 
     public static SchermataHomeFragment newInstance(MainActivity mainActivity){ return new SchermataHomeFragment(mainActivity); }
 
@@ -44,7 +46,10 @@ public class SchermataHomeFragment extends Fragment {
         homeController.createRecyclerView(recyclerView2, "ristorante", mainActivity);
         homeController.createRecyclerView(recyclerView3, "ristorante", mainActivity);*/
 
+        bottoneAccedi = getActivity().findViewById(R.id.bottoneAccedi);
+
         schermataRicercaButtonDaHome = getActivity().findViewById(R.id.schermataRicercaButtonDaHome);
+
         homeController.impostaBottoniSchermataHome();
     }
 
