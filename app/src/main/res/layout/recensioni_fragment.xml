@@ -65,4 +65,19 @@
         </LinearLayout>
     </ScrollView>
 
+    <Button
+            android:text="Scrivi una recensione"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/colorBianco"
+
+            android:layout_width="250dp"
+            android:layout_height="56dp"
+            android:id="@+id/scriviUnaRecensioneButton"
+            android:layout_marginEnd="81dp"
+
+            app:layout_constraintEnd_toEndOf="@+id/viewRecensione"
+            app:layout_constraintTop_toTopOf="@+id/viewRecensione" android:layout_marginTop="565dp"
+            app:layout_constraintStart_toStartOf="@+id/viewRecensione" android:layout_marginStart="80dp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewRecensione" android:layout_marginBottom="110dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

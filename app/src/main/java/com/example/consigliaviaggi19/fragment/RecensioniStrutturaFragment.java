@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,10 +17,12 @@ import com.example.consigliaviaggi19.entity.Struttura;
 import com.example.consigliaviaggi19.ui.recensioni.RecensioniRecycler;
 
 public class RecensioniStrutturaFragment extends Fragment {
-    private final Struttura struttura;
+    public final Struttura struttura;
     public RecensioniController recensioniController;
     public RecyclerView RecensioniRecyclerView;
     public MainActivity mainActivity;
+
+    public Button scriviUnaRecensioneButton;
 
     public static RecensioniStrutturaFragment newInstance(Struttura struttura, MainActivity mainActivity){ return new RecensioniStrutturaFragment(struttura, mainActivity); }
 
@@ -40,5 +43,10 @@ public class RecensioniStrutturaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecensioniRecyclerView = getActivity().findViewById(R.id.recyclerViewRecensioni);
         recensioniController.creaRecensioniRecyclerView(RecensioniRecyclerView, struttura, mainActivity);
+
+        scriviUnaRecensioneButton = getActivity().findViewById(R.id.scriviUnaRecensioneButton);
+
+        recensioniController.impostaBottoniSchermataRecensioni();
+
     }
 }
