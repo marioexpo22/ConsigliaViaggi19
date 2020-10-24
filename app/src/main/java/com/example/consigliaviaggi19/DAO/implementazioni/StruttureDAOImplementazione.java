@@ -5,7 +5,7 @@ import com.example.consigliaviaggi19.entity.Struttura;
 
 import java.util.List;
 
-public class StruttureDAOServer implements StruttureDAO {
+public class StruttureDAOImplementazione implements StruttureDAO {
 
     @Override
     public List<Struttura> ottieniStruttureCheContengonoString(String nomeStruttura) {

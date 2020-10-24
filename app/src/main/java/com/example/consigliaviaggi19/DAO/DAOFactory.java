@@ -1,23 +1,25 @@
 package com.example.consigliaviaggi19.DAO;
 
 import android.content.Context;
-import com.example.consigliaviaggi19.DAO.implementazioni.StruttureDAOServer;
+import com.example.consigliaviaggi19.DAO.implementazioni.RecensioniDAOImplementazione;
+import com.example.consigliaviaggi19.DAO.implementazioni.StruttureDAOImplementazione;
+import com.example.consigliaviaggi19.DAO.implementazioni.UtenteDAOImplementazione;
 
-public class DAOFactory {
+public final class DAOFactory {
     Context context;
 
     public DAOFactory(Context context){ this.context = context; }
 
-    /*public UtenteDAO ottieniUtenteDAO(){
-        return
-    }*/
+    public UtenteDAO ottieniUtenteDAO(){
+        return new UtenteDAOImplementazione();
+    }
 
-    /*public RecensioniDAO ottieniRecensioniDAO(){
-
-    }*/
+    public RecensioniDAO ottieniRecensioniDAO(){
+        return new RecensioniDAOImplementazione();
+    }
 
     public StruttureDAO ottieniStruttureDAO(){
-        return new StruttureDAOServer(); //Da passare il contesto
+        return new StruttureDAOImplementazione(); //Da passare il contesto
         //Aggiungere un eccezione
     }
 }

@@ -15,13 +15,13 @@ import com.example.consigliaviaggi19.fragment.SchermataStrutturaFragment;
 
 public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
-    private Context mContext;
+    private SchermataStrutturaFragment schermataStrutturaFragment;
     private Struttura strutturaDaCaricare;
     public MainActivity mainActivity;
 
-    public SectionsPagerAdapter(Context schermataStrutturaFragment, @NonNull FragmentManager fm, Struttura strutturaDaCaricare, MainActivity mainActivity) {
+    public SectionsPagerAdapter(SchermataStrutturaFragment schermataStrutturaFragment, @NonNull FragmentManager fm, Struttura strutturaDaCaricare, MainActivity mainActivity) {
         super(fm);
-        mContext = schermataStrutturaFragment;
+        this.schermataStrutturaFragment = schermataStrutturaFragment;
         this.strutturaDaCaricare = strutturaDaCaricare;
         this.mainActivity = mainActivity;
     }
@@ -37,7 +37,7 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
                 fragment = new PosizioneStrutturaFragment(strutturaDaCaricare);
                 break;
             case 2:
-                fragment = new RecensioniStrutturaFragment(strutturaDaCaricare, mainActivity);
+                fragment = new RecensioniStrutturaFragment(strutturaDaCaricare, mainActivity, schermataStrutturaFragment);
                 break;
         }
         return fragment;

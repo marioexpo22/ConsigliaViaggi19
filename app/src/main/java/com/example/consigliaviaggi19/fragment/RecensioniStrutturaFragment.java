@@ -21,14 +21,19 @@ public class RecensioniStrutturaFragment extends Fragment {
     public RecensioniController recensioniController;
     public RecyclerView RecensioniRecyclerView;
     public MainActivity mainActivity;
+    public SchermataStrutturaFragment schermataStrutturaFragment;
 
     public Button scriviUnaRecensioneButton;
 
-    public static RecensioniStrutturaFragment newInstance(Struttura struttura, MainActivity mainActivity){ return new RecensioniStrutturaFragment(struttura, mainActivity); }
+    public static RecensioniStrutturaFragment newInstance(Struttura struttura, MainActivity mainActivity, SchermataStrutturaFragment schermataStrutturaFragment)
+    {
+        return new RecensioniStrutturaFragment(struttura, mainActivity, schermataStrutturaFragment);
+    }
 
-    public RecensioniStrutturaFragment(Struttura struttura, MainActivity mainActivity){
+    public RecensioniStrutturaFragment(Struttura struttura, MainActivity mainActivity, SchermataStrutturaFragment schermataStrutturaFragment){
         this.struttura = struttura;
         this.mainActivity = mainActivity;
+        this.schermataStrutturaFragment = schermataStrutturaFragment;
     }
 
     @Nullable

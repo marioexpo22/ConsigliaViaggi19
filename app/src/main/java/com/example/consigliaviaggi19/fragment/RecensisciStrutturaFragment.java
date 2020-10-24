@@ -19,6 +19,8 @@ import com.google.android.material.textfield.TextInputEditText;
 public class RecensisciStrutturaFragment extends Fragment {
     public Struttura struttura;
     public MainActivity mainActivity;
+    public SchermataStrutturaFragment schermataStrutturaFragment;
+
     public RecensisciController recensisciController;
 
     public RatingBar valutazioneLuogoPerRecensione;
@@ -27,16 +29,20 @@ public class RecensisciStrutturaFragment extends Fragment {
     public Button pubblicaRecensioneButton;
     public Button annullaPubblicaRecensioneButton;
 
-    public static RecensisciStrutturaFragment newInstance(Struttura struttura, MainActivity mainActivity){ return new RecensisciStrutturaFragment(struttura, mainActivity); }
+    public static RecensisciStrutturaFragment newInstance(Struttura struttura, MainActivity mainActivity, SchermataStrutturaFragment schermataStrutturaFragment)
+    {
+        return new RecensisciStrutturaFragment(struttura, mainActivity, schermataStrutturaFragment);
+    }
 
-    public RecensisciStrutturaFragment(Struttura struttura, MainActivity mainActivity){
+    public RecensisciStrutturaFragment(Struttura struttura, MainActivity mainActivity, SchermataStrutturaFragment schermataStrutturaFragment){
         this.struttura = struttura;
         this.mainActivity = mainActivity;
+        this.schermataStrutturaFragment = schermataStrutturaFragment;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        recensisciController = new RecensisciController(this);
+        recensisciController = new RecensisciController(this, struttura);
         return inflater.inflate(R.layout.recensisci_fragment, container, false);
     }
 
@@ -49,5 +55,7 @@ public class RecensisciStrutturaFragment extends Fragment {
         contenutoRecensione = getActivity().findViewById(R.id.contenutoRecensione);
         pubblicaRecensioneButton = getActivity().findViewById(R.id.pubblicaRecensioneButton);
         annullaPubblicaRecensioneButton = getActivity().findViewById(R.id.annullaPubblicaRecensioneButton);
+
+        recensisciController.impostaBottoniSchermataRecensisci();
     }
 }

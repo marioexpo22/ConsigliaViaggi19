@@ -29,7 +29,7 @@ public class RecensioniController {
 
     public void scriviUnaRecensioneButtonPremuto(){
         recensioniStrutturaFragment.mainActivity.getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, RecensisciStrutturaFragment.newInstance(recensioniStrutturaFragment.struttura, recensioniStrutturaFragment.mainActivity))
+                .replace(R.id.container, RecensisciStrutturaFragment.newInstance(recensioniStrutturaFragment.struttura, recensioniStrutturaFragment.mainActivity, recensioniStrutturaFragment.schermataStrutturaFragment))
                 .commitNow();
     }
 
