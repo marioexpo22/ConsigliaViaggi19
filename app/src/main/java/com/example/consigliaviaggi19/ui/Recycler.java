@@ -30,11 +30,14 @@ public class Recycler extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... strings) {
         String type = strings[0];
-        String link = "http://93.151.249.125/myapp/homeConsigliati.php";
+        String link = "http://93.151.249.125/phpCV19/php/homeConsigliati.php";
 
         try{
             URL url = new URL(link);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+            if(httpURLConnection == null){ return null; }
+
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
@@ -68,6 +71,9 @@ public class Recycler extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
+        if(result == null){
+            return;
+        }
         result = result.replace("[{\"id\":\"", "");
         result = result.replace("id", "");
         result = result.replace("\",\"nomeStruttura", "");
