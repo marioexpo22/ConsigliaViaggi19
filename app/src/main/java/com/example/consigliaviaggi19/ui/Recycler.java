@@ -30,7 +30,7 @@ public class Recycler extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... strings) {
         String type = strings[0];
-        String link = "http://93.151.249.125/phpCV19/php/homeConsigliati.php";
+        String link = "http://5.95.240.5/phpCV19/php/homeConsigliati.php";
 
         try{
             URL url = new URL(link);

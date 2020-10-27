@@ -3,12 +3,16 @@ package com.example.consigliaviaggi19.controller;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Looper;
+import android.widget.Toast;
 import com.example.consigliaviaggi19.DAO.DAOFactory;
 import com.example.consigliaviaggi19.DAO.UtenteDAO;
 import com.example.consigliaviaggi19.R;
 import com.example.consigliaviaggi19.entity.Utente;
 import com.example.consigliaviaggi19.fragment.SchermataAccediFragment;
 import com.example.consigliaviaggi19.fragment.SchermataHomeFragment;
+
+import java.util.logging.Handler;
 
 public class AccediController {
 
@@ -30,48 +34,71 @@ public class AccediController {
     }
 
     public void bottoneEffettuaAccessoPremuto(){
-        String email;
-        String password;
+        String email = null;
+        String password = null;
+        int contatoreErrori = 0;
 
-        email = schermataAccediFragment.usernameTextField.getText().toString();
-        password = schermataAccediFragment.passwordTextField.getText().toString();
+        if(schermataAccediFragment.usernameTextField.getText() != null && !schermataAccediFragment.usernameTextField.getText().toString().isEmpty()){
+            email = schermataAccediFragment.usernameTextField.getText().toString();
+        } else { contatoreErrori = contatoreErrori +1; }
+
+        if(schermataAccediFragment.passwordTextField.getText() != null && !schermataAccediFragment.passwordTextField.getText().toString().isEmpty()){
+            password = schermataAccediFragment.passwordTextField.getText().toString();
+        } else { contatoreErrori = contatoreErrori +1; }
 
         utenteDAO = new DAOFactory(schermataAccediFragment.getContext()).ottieniUtenteDAO();
-        ottieniUtenteAsync(email, password);
 
-        schermataAccediFragment.mainActivity.getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, SchermataHomeFragment.newInstance(schermataAccediFragment.mainActivity))
-                .commitNow();
+        if (contatoreErrori == 0){ ottieniUtenteAsync(email, password); }
+        else { Toast.makeText(schermataAccediFragment.getActivity(),"Sono presenti campi vuoti", Toast.LENGTH_SHORT).show(); }
     }
 
     private void ottieniUtenteAsync(String email, String password){
         utente = Utente.getInstance();
 
         @SuppressLint("StaticFieldLeak")
-        class CaricaUtente extends AsyncTask<String,Void,String>{
-
+        class CaricaUtente extends AsyncTask<Void,Void,String>{
             private Context context;
 
             CaricaUtente(Context context){ this.context = context; }
 
             @Override
-            protected String doInBackground(String... strings) {
+            protected String doInBackground(Void... voids) {
                 return utenteDAO.ottieniUtenteValido(email, password);
             }
 
             @Override
-            protected void onPostExecute(String s) {
+            protected void onPostExecute(String result) {
+                if (result == null || result.length() == 0){
+                    Toast.makeText(schermataAccediFragment.getActivity(),"Email o password errati", Toast.LENGTH_SHORT).show();
+                } else{ /* GESTIONE RISULTATO */
+                    result = result.replace("[{\"id\":\"", "");
+                    result = result.replace("\",\"nickname", "");
+                    result = result.replace("\",\"nome", "");
+                    result = result.replace("\",\"cognome", "");
+                    result = result.replace("\",\"email", "");
+                    result = result.replace("{\"", "");
+                    result = result.replace("[", "");
+                    result = result.replace("\"},", "");
+                    result = result.replace("\"}", "");
+                    result = result.replace("]", "");
+                    result = result.replace("\\", "");
+                    String[] res = result.split("\":\"");
 
+                    utente.setId(Integer.parseInt(res[0]));
+                    utente.setNickname(res[1]);
+                    utente.setNome(res[2]);
+                    utente.setCognome(res[3]);
+                    utente.setEmail(res[4]);
+
+                    Toast.makeText(schermataAccediFragment.getActivity(),"Accesso effettuato", Toast.LENGTH_SHORT).show();
+                    schermataAccediFragment.mainActivity.getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.container, SchermataHomeFragment.newInstance(schermataAccediFragment.mainActivity))
+                            .commitNow();
+                }
             }
         }
-
         CaricaUtente caricaUtente = new CaricaUtente(schermataAccediFragment.getContext());
         caricaUtente.execute();
-
-        utente.setNickname("Ciro97");
-        utente.setNome("Ciro");
-        utente.setCognome("Esposito");
-        utente.setEmail("ciromail@hotmail.it");
     }
 
 }

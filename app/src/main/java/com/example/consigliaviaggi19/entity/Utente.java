@@ -1,16 +1,18 @@
 package com.example.consigliaviaggi19.entity;
 
+import android.content.Intent;
+
 public final class Utente {
 
+    private Integer id;
     private String nickname;
-    private String password;
     private String nome;
     private String cognome;
     private String email;
 
     private Utente(){
+        this.id = null;
         this.nickname = null;
-        this.password = null;
         this.nome = null;
         this.cognome = null;
         this.email = null;
@@ -24,7 +26,7 @@ public final class Utente {
 
     public String getNickname() { return nickname; }
 
-    public String getPassword() { return password; }
+    public Integer getPassword() { return id; }
 
     public String getNome() { return nome; }
 
@@ -35,7 +37,7 @@ public final class Utente {
 
     public void setNickname(String username) { this.nickname = username; }
 
-    public void setPassword(String password) { this.password = password; }
+    public void setId(Integer id) { this.id = id; }
 
     public void setNome(String nome) { this.nome = nome; }
 
