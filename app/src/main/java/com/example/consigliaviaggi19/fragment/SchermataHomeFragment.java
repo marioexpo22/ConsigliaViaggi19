@@ -42,9 +42,9 @@ public class SchermataHomeFragment extends Fragment {
 
         homeController = new HomeController(this);
 
-        homeController.createRecyclerView(recyclerView1, "ristorante", mainActivity);
-        homeController.createRecyclerView(recyclerView2, "ristorante", mainActivity);
-        homeController.createRecyclerView(recyclerView3, "ristorante", mainActivity);
+        homeController.createRecyclerView(recyclerView1, "ristorante", mainActivity, this);
+        homeController.createRecyclerView(recyclerView2, "ristorante", mainActivity, this);
+        homeController.createRecyclerView(recyclerView3, "ristorante", mainActivity, this);
 
         bottoneAccedi = getActivity().findViewById(R.id.bottoneAccedi);
 

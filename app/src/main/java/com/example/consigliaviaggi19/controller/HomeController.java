@@ -70,8 +70,8 @@ public class HomeController {
         Toast.makeText(schermataHomeFragment.getActivity(),"Logout effettuato", Toast.LENGTH_SHORT).show();
     }
 
-    public void createRecyclerView(RecyclerView recyclerView, String type, MainActivity mainActivity){
-        Recycler recycler = new Recycler(mainActivity, recyclerView, this);
+    public void createRecyclerView(RecyclerView recyclerView, String type, MainActivity mainActivity, SchermataHomeFragment schermataHomeFragment){
+        Recycler recycler = new Recycler(mainActivity, recyclerView, this, schermataHomeFragment);
         recycler.execute(type);
     }
 }

@@ -21,11 +21,13 @@ public class Recycler extends AsyncTask<String,Void,String> {
     Context context;
     RecyclerView recyclerView;
     HomeController homeController;
+    SchermataHomeFragment schermataHomeFragment;
 
-    public Recycler(Context ctx, RecyclerView recyclerView, HomeController homeController){
+    public Recycler(Context ctx, RecyclerView recyclerView, HomeController homeController, SchermataHomeFragment schermataHomeFragment){
         context = ctx;
         this.recyclerView = recyclerView;
         this.homeController = homeController;
+        this.schermataHomeFragment = schermataHomeFragment;
     }
 
     @Override
@@ -129,7 +131,7 @@ public class Recycler extends AsyncTask<String,Void,String> {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //Initialize MainAdapter
-        mainAdapter = new MainAdapter(context, mainModels);
+        mainAdapter = new MainAdapter(context, mainModels, recyclerView, schermataHomeFragment, strutture);
         //Set MainAdapter to RecyclerView
         recyclerView.setAdapter(mainAdapter);
     }

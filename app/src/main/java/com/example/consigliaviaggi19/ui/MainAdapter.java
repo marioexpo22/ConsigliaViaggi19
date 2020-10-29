@@ -12,7 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.consigliaviaggi19.R;
-
+import com.example.consigliaviaggi19.entity.Struttura;
+import com.example.consigliaviaggi19.fragment.SchermataHomeFragment;
+import com.example.consigliaviaggi19.fragment.SchermataStrutturaFragment;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -21,10 +23,32 @@ import java.util.ArrayList;
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     ArrayList<MainModel> mainModels;
     Context context;
+    RecyclerView recyclerView;
+    private SchermataHomeFragment schermataHomeFragment;
+    private static Struttura[] elencoStrutture;
 
-    public MainAdapter(Context ctx, ArrayList<MainModel> models){
+    private View.OnClickListener myOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            int position = recyclerView.getChildLayoutPosition(view);
+            String item = mainModels.get(position).getStructName();
+
+
+            for(Struttura struttura : elencoStrutture){
+                if(struttura.nomeStruttura.equals(item))
+                    schermataHomeFragment.mainActivity.getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.container, SchermataStrutturaFragment.newInstance(schermataHomeFragment.mainActivity, struttura))
+                            .commitNow();
+            }
+        }
+    };
+
+    public MainAdapter(Context ctx, ArrayList<MainModel> models, RecyclerView recyclerView, SchermataHomeFragment schermataHomeFragment, Struttura[] strutture){
         context = ctx;
         mainModels = models;
+        this.recyclerView = recyclerView;
+        this.schermataHomeFragment = schermataHomeFragment;
+        elencoStrutture = strutture;
     }
 
     @NonNull
@@ -32,6 +56,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //Create View
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item, parent, false);
+        view.setOnClickListener(myOnClickListener);
         return new ViewHolder(view);
     }
 
