@@ -43,11 +43,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/ricercaStrutturaButton"
 
-            android:layout_marginBottom="101dp"
-            app:layout_constraintBottom_toTopOf="@+id/viewPager" android:layout_marginEnd="356dp"
+            android:layout_marginEnd="347dp"
             app:layout_constraintEnd_toEndOf="@+id/immagineStruttura"
-            app:layout_constraintTop_toTopOf="@+id/immagineStruttura" android:layout_marginTop="7dp"
-            app:layout_constraintStart_toStartOf="@+id/immagineStruttura" android:layout_marginStart="8dp"/>
+            app:layout_constraintBottom_toBottomOf="@+id/immagineStruttura" android:layout_marginBottom="92dp"
+            app:layout_constraintTop_toTopOf="@+id/immagineStruttura" android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/immagineStruttura" android:layout_marginStart="17dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

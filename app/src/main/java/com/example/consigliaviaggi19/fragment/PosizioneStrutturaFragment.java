@@ -14,10 +14,9 @@ import com.example.consigliaviaggi19.entity.Struttura;
 public class PosizioneStrutturaFragment extends Fragment {
     private final Struttura struttura;
 
-    //public static PosizioneStrutturaFragment newInstance(Struttura struttura){ return new PosizioneStrutturaFragment(struttura); }
-
     private TextView indirizzoPosizione;
     private TextView sitowebPosizione;
+    private TextView contattiPosizione;
 
     public PosizioneStrutturaFragment(Struttura struttura){ this.struttura = struttura; }
 
@@ -32,13 +31,14 @@ public class PosizioneStrutturaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         indirizzoPosizione = getActivity().findViewById(R.id.indirizzoPosizione);
         sitowebPosizione = getActivity().findViewById(R.id.sitowebPosizione);
+        contattiPosizione = getActivity().findViewById(R.id.contattiPosizione);
         caricaPaginaPosizione();
     }
 
     private void caricaPaginaPosizione(){
         indirizzoPosizione.setText(struttura.indirizzo);
         sitowebPosizione.setText(struttura.sitoWeb);
-
+        contattiPosizione.setText(struttura.numeroDiTelefono);
     }
 
 }

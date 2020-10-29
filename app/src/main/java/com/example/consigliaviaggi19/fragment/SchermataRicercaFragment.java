@@ -1,6 +1,4 @@
 package com.example.consigliaviaggi19.fragment;
-
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -113,7 +111,7 @@ public class SchermataRicercaFragment extends Fragment implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         setMappa(googleMap);
 
-        mappaController.caricaStruttureSuMappa();
+        mappaController.caricaStruttureSuMappaAsync();
         googleMap.setOnMarkerClickListener(mappaController);
     }
 

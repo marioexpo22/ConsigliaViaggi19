@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import androidx.annotation.NonNull;
@@ -28,6 +29,8 @@ public class RecensisciStrutturaFragment extends Fragment {
     public EditText contenutoRecensione;
     public Button pubblicaRecensioneButton;
     public Button annullaPubblicaRecensioneButton;
+    public CheckBox nomeCognome;
+    public CheckBox nickname;
 
     public static RecensisciStrutturaFragment newInstance(Struttura struttura, MainActivity mainActivity, SchermataStrutturaFragment schermataStrutturaFragment)
     {
@@ -55,6 +58,9 @@ public class RecensisciStrutturaFragment extends Fragment {
         contenutoRecensione = getActivity().findViewById(R.id.contenutoRecensione);
         pubblicaRecensioneButton = getActivity().findViewById(R.id.pubblicaRecensioneButton);
         annullaPubblicaRecensioneButton = getActivity().findViewById(R.id.annullaPubblicaRecensioneButton);
+
+        nomeCognome = getActivity().findViewById(R.id.nomeCognome);
+        nickname = getActivity().findViewById(R.id.nickname);
 
         recensisciController.impostaBottoniSchermataRecensisci();
     }

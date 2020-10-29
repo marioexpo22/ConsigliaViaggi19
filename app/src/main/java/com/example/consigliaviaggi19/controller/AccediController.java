@@ -3,7 +3,6 @@ package com.example.consigliaviaggi19.controller;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Looper;
 import android.widget.Toast;
 import com.example.consigliaviaggi19.DAO.DAOFactory;
 import com.example.consigliaviaggi19.DAO.UtenteDAO;
@@ -11,8 +10,6 @@ import com.example.consigliaviaggi19.R;
 import com.example.consigliaviaggi19.entity.Utente;
 import com.example.consigliaviaggi19.fragment.SchermataAccediFragment;
 import com.example.consigliaviaggi19.fragment.SchermataHomeFragment;
-
-import java.util.logging.Handler;
 
 public class AccediController {
 

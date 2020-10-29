@@ -4,13 +4,12 @@ import android.os.AsyncTask;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.consigliaviaggi19.DAO.DAOFactory;
+import com.example.consigliaviaggi19.DAO.RecensioniDAO;
 import com.example.consigliaviaggi19.MainActivity;
 import com.example.consigliaviaggi19.controller.RecensioniController;
 import com.example.consigliaviaggi19.entity.Recensione;
 import com.example.consigliaviaggi19.entity.Struttura;
-import com.example.consigliaviaggi19.ui.MainAdapter;
-import com.example.consigliaviaggi19.ui.MainModel;
-
 
 import java.util.ArrayList;
 
@@ -20,49 +19,55 @@ public class RecensioniRecycler extends AsyncTask<String,Void,String> {
     RecyclerView recensioniRecyclerView;
     Struttura struttura;
     RecensioniController recensioniController;
+    RecensioniDAO recensioniDAO;
 
     public RecensioniRecycler(MainActivity mainActivity, RecyclerView recensioniRecyclerView, Struttura struttura, RecensioniController recensioniController){
         this.mainActivity = mainActivity;
         this.recensioniRecyclerView = recensioniRecyclerView;
         this.struttura = struttura;
         this.recensioniController = recensioniController;
-
     }
 
     @Override
     protected String doInBackground(String... strings) {
-        return null;
-    }
-
-    @Override
-    protected void onPreExecute(){
+        recensioniDAO = new DAOFactory(recensioniController.getRecensioniStrutturaFragment().getContext()).ottieniRecensioniDAO();
+        return recensioniDAO.ottieniRecensioniStruttura(struttura,
+                recensioniController.getRecensioniStrutturaFragment().filtroStelle.getRating(),
+                recensioniController.getRecensioniStrutturaFragment().filtroData.getSelectedItem().toString());
     }
 
     @Override
     protected void onPostExecute(String result) {
-
-        ArrayList<Recensione> listaRecensioni;
+        ArrayList<Recensione> listaRecensioni = new ArrayList<>();
         RecensioniMainAdapter recensioniMainAdapter;
 
+        if(result == null || result.isEmpty()){
+        } else {
+            result = result.replace("[{\"titolo\":\"", "");
+            result = result.replace("\",\"descrizione", "");
+            result = result.replace("\",\"nomeVisualizzato", "");
+            result = result.replace("\",\"rating", "");
+            result = result.replace("\",\"data", "");
+            result = result.replace("{\"", "");
+            result = result.replace("[", "");
+            result = result.replace("\"},", "");
+            result = result.replace("\"}", "");
+            result = result.replace("]", "");
+            result = result.replace("\\", "");
+            String[] res = result.split("\":\"");
 
-        listaRecensioni = new ArrayList<>();
-        int i;
-
-        for(i = 0; i < 6; i++){
-            Recensione recensione = new Recensione("Titolo " + i, 3,
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                    "Ciro", "24/08/2020");
-            listaRecensioni.add(recensione);
-            System.out.println("Inserito item" + i + "\n");
+            int i = 0;
+            while (i < res.length) {
+                listaRecensioni.add(new Recensione(null,null, res[i], Float.parseFloat(res[i+3]), res[i+1], res[i+2], res[i+4]));
+                i += 5;
+            }
         }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false);
         recensioniRecyclerView.setLayoutManager(linearLayoutManager);
         recensioniRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        //Initialize MainAdapter
         recensioniMainAdapter = new RecensioniMainAdapter(mainActivity, listaRecensioni);
-        //Set MainAdapter to RecyclerView
         recensioniRecyclerView.setAdapter(recensioniMainAdapter);
     }
 

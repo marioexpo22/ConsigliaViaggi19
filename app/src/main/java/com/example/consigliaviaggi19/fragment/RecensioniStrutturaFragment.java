@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +24,9 @@ public class RecensioniStrutturaFragment extends Fragment {
     public RecyclerView RecensioniRecyclerView;
     public MainActivity mainActivity;
     public SchermataStrutturaFragment schermataStrutturaFragment;
+
+    public RatingBar filtroStelle;
+    public Spinner filtroData;
 
     public Button scriviUnaRecensioneButton;
 
@@ -47,9 +52,11 @@ public class RecensioniStrutturaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         RecensioniRecyclerView = getActivity().findViewById(R.id.recyclerViewRecensioni);
-        recensioniController.creaRecensioniRecyclerView(RecensioniRecyclerView, struttura, mainActivity);
-
+        filtroStelle = getActivity().findViewById(R.id.filtroValutazioneLuoghi);
+        filtroData = getActivity().findViewById(R.id.spinner);
         scriviUnaRecensioneButton = getActivity().findViewById(R.id.scriviUnaRecensioneButton);
+
+        recensioniController.creaRecensioniRecyclerView(RecensioniRecyclerView, struttura, mainActivity);
 
         recensioniController.impostaBottoniSchermataRecensioni();
 

@@ -87,13 +87,11 @@
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@color/colorBianco"
 
-            app:layout_constraintTop_toTopOf="@+id/sfondoSchermataRecensisci"
-            android:layout_marginTop="564dp" app:layout_constraintStart_toStartOf="@+id/sfondoSchermataRecensisci"
-            android:layout_marginStart="234dp" android:layout_marginEnd="51dp"
+            app:layout_constraintStart_toStartOf="@+id/sfondoSchermataRecensisci"
+            android:layout_marginStart="234dp" app:layout_constraintTop_toTopOf="@+id/sfondoSchermataRecensisci"
+            android:layout_marginTop="595dp" android:layout_marginEnd="51dp"
             app:layout_constraintEnd_toEndOf="@+id/sfondoSchermataRecensisci"
-            app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataRecensisci"
-            android:layout_marginBottom="111dp"/>
-
+            app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataRecensisci" android:layout_marginBottom="80dp"/>
     <Button
             android:text="Annulla"
             android:layout_width="126dp"
@@ -103,11 +101,28 @@
             android:textColor="@color/colorBianco"
 
             app:layout_constraintTop_toTopOf="@+id/sfondoSchermataRecensisci"
-            android:layout_marginTop="564dp" android:layout_marginEnd="235dp"
+            android:layout_marginTop="595dp" android:layout_marginEnd="235dp"
             app:layout_constraintEnd_toEndOf="@+id/sfondoSchermataRecensisci"
+            app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataRecensisci" android:layout_marginBottom="80dp"
+            app:layout_constraintStart_toStartOf="@+id/sfondoSchermataRecensisci" android:layout_marginStart="50dp"/>
+    <CheckBox
+            android:text="Nome e cognome"
+            android:layout_width="126dp"
+            android:layout_height="38dp" android:id="@+id/nomeCognome"
+            app:layout_constraintTop_toTopOf="@+id/sfondoSchermataRecensisci"
+            android:layout_marginTop="548dp" app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataRecensisci"
+            android:layout_marginBottom="145dp" android:layout_marginEnd="235dp"
+            app:layout_constraintEnd_toEndOf="@+id/sfondoSchermataRecensisci"
+            app:layout_constraintStart_toStartOf="@+id/sfondoSchermataRecensisci" android:layout_marginStart="50dp"/>
+    <CheckBox
+            android:text="Nickname"
+            android:layout_width="126dp"
+            android:layout_height="38dp" android:id="@+id/nickname"
+            android:layout_marginEnd="51dp" app:layout_constraintEnd_toEndOf="@+id/sfondoSchermataRecensisci"
+            app:layout_constraintTop_toTopOf="@+id/sfondoSchermataRecensisci" android:layout_marginTop="548dp"
+            app:layout_constraintStart_toStartOf="@+id/sfondoSchermataRecensisci" android:layout_marginStart="234dp"
             app:layout_constraintBottom_toBottomOf="@+id/sfondoSchermataRecensisci"
-            android:layout_marginBottom="111dp" app:layout_constraintStart_toStartOf="@+id/sfondoSchermataRecensisci"
-            android:layout_marginStart="50dp"/>
+            android:layout_marginBottom="145dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

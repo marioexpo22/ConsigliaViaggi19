@@ -28,37 +28,36 @@
             android:scaleY="0.8"
             android:transformPivotX="0dp"
 
-            android:layout_marginEnd="151dp"
-            app:layout_constraintEnd_toEndOf="@+id/viewInformazioni"
-            app:layout_constraintStart_toStartOf="@+id/viewInformazioni" android:layout_marginStart="24dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintBottom_toBottomOf="@+id/viewInformazioni" android:layout_marginBottom="516dp"/>
-
+            app:layout_constraintTop_toTopOf="@+id/viewInformazioni"
+            android:layout_marginTop="170dp" app:layout_constraintBottom_toBottomOf="@+id/viewInformazioni"
+            android:layout_marginBottom="518dp" app:layout_constraintStart_toStartOf="@+id/viewInformazioni"
+            android:layout_marginStart="27dp" android:layout_marginEnd="147dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewInformazioni"/>
     <TextView
             android:text="@string/nome_struttura"
-            android:layout_width="364dp"
-            android:layout_height="30dp" android:id="@+id/nomeStrutturaInformazioni"
+            android:layout_width="356dp"
+            android:layout_height="34dp" android:id="@+id/nomeStrutturaInformazioni"
             android:textAlignment="textStart" android:textAllCaps="true"
             android:textSize="24sp"
             android:textColor="@color/colorNero"
             android:textStyle="bold"
 
-            android:layout_marginEnd="26dp" app:layout_constraintEnd_toEndOf="@+id/viewInformazioni"
-            app:layout_constraintStart_toStartOf="@+id/viewInformazioni" android:layout_marginStart="27dp"
-            app:layout_constraintHorizontal_bias="0.666" android:layout_marginBottom="21dp"
-            app:layout_constraintBottom_toTopOf="@+id/valutazioneStrutturaInformazioni"/>
-
+            app:layout_constraintBottom_toBottomOf="@+id/viewInformazioni"
+            android:layout_marginBottom="584dp" app:layout_constraintStart_toStartOf="@+id/viewInformazioni"
+            android:layout_marginStart="27dp" android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewInformazioni" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toTopOf="@+id/viewInformazioni" android:layout_marginTop="114dp"/>
 
     <ScrollView
-            android:layout_width="364dp"
-            android:layout_height="380dp"
+            android:layout_width="359dp"
+            android:layout_height="286dp"
 
-            android:layout_marginEnd="24dp"
+            android:id="@+id/scrollViewInformazioni"
+            app:layout_constraintBottom_toBottomOf="@+id/viewInformazioni"
+            android:layout_marginBottom="209dp" app:layout_constraintStart_toStartOf="@+id/viewInformazioni"
+            android:layout_marginStart="27dp" android:layout_marginEnd="25dp"
             app:layout_constraintEnd_toEndOf="@+id/viewInformazioni"
-            app:layout_constraintStart_toStartOf="@+id/viewInformazioni" android:layout_marginStart="23dp"
-            android:id="@+id/scrollViewInformazioni" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintBottom_toBottomOf="@+id/viewInformazioni" android:layout_marginBottom="104dp"
-            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/valutazioneStrutturaInformazioni">
+            app:layout_constraintTop_toTopOf="@+id/viewInformazioni" android:layout_marginTop="236dp">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -74,7 +73,6 @@
                     android:textColor="@color/colorNero"/>
         </LinearLayout>
     </ScrollView>
-
     <TextView
             android:text="Media recensioni"
             android:layout_width="121dp"
@@ -84,10 +82,10 @@
             android:textStyle="bold"
             android:textColor="@color/colorNero"
 
-            android:layout_marginEnd="52dp"
-            app:layout_constraintEnd_toEndOf="@+id/viewInformazioni" android:layout_marginTop="31dp"
-            app:layout_constraintTop_toBottomOf="@+id/nomeStrutturaInformazioni" android:layout_marginBottom="41dp"
-            app:layout_constraintBottom_toTopOf="@+id/scrollViewInformazioni" app:layout_constraintVertical_bias="1.0"
-            />
+            app:layout_constraintBottom_toBottomOf="@+id/viewInformazioni"
+            android:layout_marginBottom="528dp" app:layout_constraintStart_toStartOf="@+id/viewInformazioni"
+            android:layout_marginStart="264dp" app:layout_constraintTop_toTopOf="@+id/viewInformazioni"
+            android:layout_marginTop="179dp" android:layout_marginEnd="26dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewInformazioni"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

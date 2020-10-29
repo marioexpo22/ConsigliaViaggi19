@@ -4,29 +4,41 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import com.example.consigliaviaggi19.DAO.DAOFactory;
+import com.example.consigliaviaggi19.DAO.StruttureDAO;
 import com.example.consigliaviaggi19.R;
 import com.example.consigliaviaggi19.entity.Struttura;
+import com.example.consigliaviaggi19.fragment.SchermataHomeFragment;
 import com.example.consigliaviaggi19.fragment.SchermataRicercaFragment;
 import com.example.consigliaviaggi19.fragment.SchermataStrutturaFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.*;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.*;
 
 public class MappaController extends AppCompatActivity implements GoogleMap.OnMarkerClickListener {
 
     private SchermataRicercaFragment schermataRicercaFragment;
-    private static List<MarkerOptions> listaMarker;
+    private static List<Marker> listaMarker;
     private static Set<Struttura> elencoStrutture = new HashSet<>();
 
     private Struttura strutturaCorrente = null;
     private boolean strutturaTrovata = false;
+
+    private StruttureDAO struttureDAO;
 
     public MappaController(SchermataRicercaFragment schermataRicercaFragment) {
         this.schermataRicercaFragment = schermataRicercaFragment;
@@ -85,28 +97,76 @@ public class MappaController extends AppCompatActivity implements GoogleMap.OnMa
         mappa.animateCamera(CameraUpdateFactory.newCameraPosition(posizioneCamera), milliSecondiTransizione, null);
     }
 
-    public void caricaStruttureSuMappa(){
+    public void caricaStruttureSuMappaAsync(){
+        struttureDAO = new DAOFactory(schermataRicercaFragment.getContext()).ottieniStruttureDAO();
 
-        /** L'OTTENIMENTO DELLE STRUTTURE VA CAMBIATO **/
-        elencoStrutture.add(new Struttura(1,"Test1","null","null","null","null","null",14.147411,40.914124, "Hotel","null",4.0f));
-        elencoStrutture.add(new Struttura(2,"Test2","null","null","null","null","null",14.147611,40.914556, "Ristorante","null", 4.0f));
-        elencoStrutture.add(new Struttura(3,"Test3","null","null","null","null","null",14.148805,40.914174, "Attrazione","null", 4.0f));
-        elencoStrutture.add(new Struttura(4,"Test4","null","null","null","null","null",14.148424,40.914618, "Hotel","null",5.0f));
-        elencoStrutture.add(new Struttura(5,"Test5","null","null","null","null","null",14.147921,40.913287, "Ristorante","null",3.0f));
-        elencoStrutture.add(new Struttura(6,"Test6","null","null","null","null","null",14.147403,40.913040, "Attrazione","null",5.0f));
+        @SuppressLint("StaticFieldLeak")
+        class CaricaStrutture extends AsyncTask<Void,Void,String> {
+            private Context context;
 
-        listaMarker = new ArrayList<>();
+            CaricaStrutture(Context context){ this.context = context; }
 
-        for (Struttura struttura : elencoStrutture){
-            MarkerOptions marker = creaMarkerPerStruttura(struttura);
-            listaMarker.add(marker);
-            schermataRicercaFragment.getMappa().addMarker(marker);
+            @Override
+            protected String doInBackground(Void... voids) {
+                return struttureDAO.ottieniTutteStrutture();
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                if (result == null || result.length() == 0){
+                    System.out.println("NESSUNA STRUTTURA");
+                } else{
+                    result = result.replace("[{\"id\":\"", "");
+                    result = result.replace("id", "");
+                    result = result.replace("\",\"nomeStruttura", "");
+                    result = result.replace("\",\"descrizione", "");
+                    result = result.replace("\",\"emailStruttura", "");
+                    result = result.replace("\",\"numeroDiTelefono", "");
+                    result = result.replace("\",\"indirizzo", "");
+                    result = result.replace("\",\"immagineStruttura", "");
+                    result = result.replace("\",\"latitudine", "");
+                    result = result.replace("\",\"longitudine", "");
+                    result = result.replace("\",\"tipoStruttura", "");
+                    result = result.replace("\",\"sitoWeb", "");
+                    result = result.replace("\",\"stelle", "");
+                    result = result.replace("{\"", "");
+                    result = result.replace("[", "");
+                    result = result.replace("\"},", "");
+                    result = result.replace("\"}", "");
+                    result = result.replace("]", "");
+                    result = result.replace("\\", "");
+                    String[] res = result.split("\":\"");
+
+                    int i = 0; int id; float stelle; double latitudine, longitudine;
+                    while (i < res.length) {
+                        id = Integer.parseInt(res[i]);
+                        stelle = Float.parseFloat(res[i+11]);
+                        latitudine = Double.parseDouble(res[i + 7]);
+                        longitudine = Double.parseDouble(res[i + 8]);
+                        elencoStrutture.add(new Struttura(id, res[i+1], res[i+2], res[i+3],
+                                res[i+4], res[i+5], res[i+6], latitudine, longitudine,
+                                res[i+9], res[i+10], stelle));
+                        i += 12;
+                    }
+
+                    listaMarker = new ArrayList<>();
+
+                    for (Struttura struttura : elencoStrutture){
+                        MarkerOptions markerOptions = creaMarkerPerStruttura(struttura);
+                        Marker marker = schermataRicercaFragment.getMappa().addMarker(markerOptions);
+                        listaMarker.add(marker);
+                    }
+                }
+            }
         }
-
+        CaricaStrutture caricaStrutture = new CaricaStrutture(schermataRicercaFragment.getContext());
+        caricaStrutture.execute();
     }
+
 
     public MarkerOptions creaMarkerPerStruttura(Struttura struttura){
         MarkerOptions marker = new MarkerOptions();
+
 
         BitmapDescriptor iconaHotel = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
         BitmapDescriptor iconaRistorante = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW);
@@ -145,6 +205,8 @@ public class MappaController extends AppCompatActivity implements GoogleMap.OnMa
         schermataRicercaFragment.nomeStrutturaPreview.setText(strutturaCorrente.nomeStruttura);
         schermataRicercaFragment.tipoStrutturaPreview.setText(strutturaCorrente.tipoStruttura);
         schermataRicercaFragment.valutazioneLuoghiPreview.setRating(strutturaCorrente.numeroStelle);
+        LoadImage loadImage = new LoadImage(schermataRicercaFragment.immagineStrutturaPreview);
+        loadImage.execute(strutturaCorrente.immagineStruttura);
 
         return false;
     }
@@ -166,4 +228,34 @@ public class MappaController extends AppCompatActivity implements GoogleMap.OnMa
                     .commitNow();
         }
     }
+
+    private class LoadImage extends AsyncTask<String, Void, Bitmap> {
+        ImageView imageView;
+
+        public LoadImage(ImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            String url = strings[0];
+            Bitmap bitmap = null;
+            try {
+                InputStream inputStream = new URL(url).openStream();
+                bitmap = BitmapFactory.decodeStream(inputStream);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            imageView.setImageBitmap(bitmap);
+        }
+    }
+
+    public Set<Struttura> getElencoStrutture() { return elencoStrutture; }
+    public List<Marker> getListaMarker() { return listaMarker; }
 }

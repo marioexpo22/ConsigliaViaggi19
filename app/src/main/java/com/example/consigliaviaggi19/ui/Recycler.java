@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.consigliaviaggi19.controller.HomeController;
+import com.example.consigliaviaggi19.entity.LinkConnessioneServer;
 import com.example.consigliaviaggi19.entity.Struttura;
 import com.example.consigliaviaggi19.fragment.SchermataHomeFragment;
 
@@ -30,7 +31,7 @@ public class Recycler extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... strings) {
         String type = strings[0];
-        String link = "http://5.95.240.5/phpCV19/php/homeConsigliati.php";
+        String link = LinkConnessioneServer.getInstance().getLink() + "homeConsigliati.php";
 
         try{
             URL url = new URL(link);
@@ -71,9 +72,7 @@ public class Recycler extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        if(result == null){
-            return;
-        }
+        if(result == null || result.isEmpty()){ return; }
         result = result.replace("[{\"id\":\"", "");
         result = result.replace("id", "");
         result = result.replace("\",\"nomeStruttura", "");
@@ -86,6 +85,7 @@ public class Recycler extends AsyncTask<String,Void,String> {
         result = result.replace("\",\"longitudine", "");
         result = result.replace("\",\"tipoStruttura", "");
         result = result.replace("\",\"sitoWeb", "");
+        result = result.replace("\",\"stelle", "");
         result = result.replace("{\"", "");
         result = result.replace("[", "");
         result = result.replace("\"},", "");

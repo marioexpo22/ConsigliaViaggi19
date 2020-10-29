@@ -8,14 +8,14 @@ public class Struttura {
     public String numeroDiTelefono;
     public String indirizzo;
     public String immagineStruttura;
-    public double latitudine;
     public double longitudine;
+    public double latitudine;
     public String tipoStruttura;
     public String sitoWeb;
     public float numeroStelle;
 
     public Struttura(int idStruttura, String nomeStruttura, String descrizione, String emailStruttura, String numeroDiTelefono,
-                     String indirizzo, String immagineStruttura, double longitudine, double latitudine,  String tipoStruttura, String sitoWeb, float numeroStelle){
+                     String indirizzo, String immagineStruttura, double latitudine, double longitudine,  String tipoStruttura, String sitoWeb, float numeroStelle){
         this.idStruttura = idStruttura;
         this.nomeStruttura = nomeStruttura;
         this.descrizione = descrizione;

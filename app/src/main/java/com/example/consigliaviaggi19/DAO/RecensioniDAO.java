@@ -7,6 +7,6 @@ import com.example.consigliaviaggi19.fragment.RecensisciStrutturaFragment;
 import java.util.List;
 
 public interface RecensioniDAO {
-    List<Recensione> ottieniRecensioniStruttura(Struttura struttura);
-    Boolean aggiungiRecensione(Recensione recensione);
+    String ottieniRecensioniStruttura(Struttura struttura, Float rating, String data);
+    String aggiungiRecensione(Recensione recensione);
 }

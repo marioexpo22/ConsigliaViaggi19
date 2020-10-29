@@ -1,7 +1,5 @@
 package com.example.consigliaviaggi19.entity;
 
-import android.content.Intent;
-
 public final class Utente {
 
     private Integer id;
@@ -26,7 +24,7 @@ public final class Utente {
 
     public String getNickname() { return nickname; }
 
-    public Integer getPassword() { return id; }
+    public Integer getId() { return id; }
 
     public String getNome() { return nome; }
 

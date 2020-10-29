@@ -36,9 +36,10 @@
 
             app:layout_constraintTop_toTopOf="@+id/viewHome"
             android:layout_marginTop="5dp" app:layout_constraintStart_toStartOf="@+id/viewHome"
-            android:layout_marginStart="244dp" android:layout_marginBottom="128dp"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView2" android:layout_marginEnd="112dp"
-            app:layout_constraintEnd_toEndOf="@+id/viewHome"/>
+            android:layout_marginStart="244dp"
+            android:layout_marginEnd="112dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewHome" app:layout_constraintBottom_toBottomOf="@+id/viewHome"
+            android:layout_marginBottom="679dp"/>
     <Button
             android:text="Accedi"
             android:layout_width="wrap_content"
@@ -46,10 +47,11 @@
             android:id="@+id/bottoneAccedi"
 
             android:layout_marginTop="5dp"
-            app:layout_constraintTop_toTopOf="@+id/viewHome" android:layout_marginBottom="127dp"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView2" app:layout_constraintStart_toStartOf="@+id/viewHome"
+            app:layout_constraintTop_toTopOf="@+id/viewHome"
+            app:layout_constraintStart_toStartOf="@+id/viewHome"
             android:layout_marginStart="307dp" android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/viewHome"/>
+            app:layout_constraintEnd_toEndOf="@+id/viewHome" app:layout_constraintBottom_toBottomOf="@+id/viewHome"
+            android:layout_marginBottom="678dp"/>
     <TextView
             android:layout_width="272dp"
             android:layout_height="52dp"
@@ -62,20 +64,21 @@
             android:layout_marginStart="11dp"
             android:layout_marginEnd="128dp"
             app:layout_constraintEnd_toEndOf="@+id/viewHome" app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginBottom="32dp" app:layout_constraintBottom_toTopOf="@+id/scrollView2"/>
+            app:layout_constraintBottom_toBottomOf="@+id/viewHome" android:layout_marginBottom="583dp"/>
+
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="522dp"
             android:orientation="vertical"
             android:gravity="center"
             android:scrollbars="none"
             android:padding="10dp"
 
             android:id="@+id/scrollView2"
+            app:layout_constraintTop_toTopOf="@+id/viewHome"
+            android:layout_marginTop="177dp" app:layout_constraintStart_toStartOf="@+id/viewHome"
             app:layout_constraintEnd_toEndOf="@+id/viewHome"
-            app:layout_constraintStart_toStartOf="@+id/viewHome"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toTopOf="@+id/viewHome"
-            android:layout_marginTop="180dp">
+            app:layout_constraintBottom_toBottomOf="@+id/viewHome" android:layout_marginBottom="32dp">
 
         <LinearLayout
                 android:layout_width="match_parent"
