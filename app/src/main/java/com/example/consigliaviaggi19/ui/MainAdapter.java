@@ -100,7 +100,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             try {
                 InputStream inputStream = new URL(url).openStream();
                 bitmap = BitmapFactory.decodeStream(inputStream);
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -109,7 +108,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            imageView.setImageBitmap(bitmap);
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 300, 300, false));
         }
     }
 }
