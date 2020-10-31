@@ -28,6 +28,7 @@ public class SchermataAccediFragment extends Fragment {
 
     public static SchermataAccediFragment newInstance(MainActivity mainActivity){ return new SchermataAccediFragment(mainActivity); }
 
+    public SchermataAccediFragment(){ }
     private SchermataAccediFragment (MainActivity mainActivity){ this.mainActivity = mainActivity; }
 
 

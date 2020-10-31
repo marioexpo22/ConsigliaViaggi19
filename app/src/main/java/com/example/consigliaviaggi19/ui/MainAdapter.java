@@ -26,6 +26,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     RecyclerView recyclerView;
     private SchermataHomeFragment schermataHomeFragment;
     private static Struttura[] elencoStrutture;
+    private SchermataStrutturaFragment schermataStrutturaFragment;
 
     private View.OnClickListener myOnClickListener = new View.OnClickListener() {
         @Override
@@ -33,12 +34,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             int position = recyclerView.getChildLayoutPosition(view);
             String item = mainModels.get(position).getStructName();
 
-
             for(Struttura struttura : elencoStrutture){
-                if(struttura.nomeStruttura.equals(item))
+                if(struttura.nomeStruttura.equals(item)){
+                    schermataStrutturaFragment = SchermataStrutturaFragment.newInstance(schermataHomeFragment.mainActivity, struttura);
+                    schermataStrutturaFragment.tornaAllaHome = 1;
                     schermataHomeFragment.mainActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container, SchermataStrutturaFragment.newInstance(schermataHomeFragment.mainActivity, struttura))
+                            .replace(R.id.container, schermataStrutturaFragment)
                             .commitNow();
+                }
             }
         }
     };

@@ -40,6 +40,8 @@ public class MappaController extends AppCompatActivity implements GoogleMap.OnMa
 
     private StruttureDAO struttureDAO;
 
+    public MappaController(){}
+
     public MappaController(SchermataRicercaFragment schermataRicercaFragment) {
         this.schermataRicercaFragment = schermataRicercaFragment;
     }
@@ -98,7 +100,7 @@ public class MappaController extends AppCompatActivity implements GoogleMap.OnMa
     }
 
     public void caricaStruttureSuMappaAsync(){
-        struttureDAO = new DAOFactory(schermataRicercaFragment.getContext()).ottieniStruttureDAO();
+        struttureDAO = new DAOFactory().ottieniStruttureDAO();
 
         @SuppressLint("StaticFieldLeak")
         class CaricaStrutture extends AsyncTask<Void,Void,String> {
@@ -152,6 +154,7 @@ public class MappaController extends AppCompatActivity implements GoogleMap.OnMa
                     listaMarker = new ArrayList<>();
 
                     for (Struttura struttura : elencoStrutture){
+                        struttura.numeroStelle = correggiMedia(struttura.numeroStelle);
                         MarkerOptions markerOptions = creaMarkerPerStruttura(struttura);
                         Marker marker = schermataRicercaFragment.getMappa().addMarker(markerOptions);
                         listaMarker.add(marker);
@@ -181,6 +184,19 @@ public class MappaController extends AppCompatActivity implements GoogleMap.OnMa
         else { marker.icon(iconaAttrazione); }
 
         return marker;
+    }
+
+    public float correggiMedia(float mediaRating){
+        float numeroStella;
+        if (mediaRating < 0 || mediaRating > 5){ throw new IllegalArgumentException(); }
+
+        if(mediaRating - (int)mediaRating < 0.3f){ numeroStella = (int)mediaRating; }
+        else if (mediaRating - (int)mediaRating <= 0.75f){ numeroStella = (int)mediaRating + 0.5f; }
+        else { numeroStella = (int)mediaRating + 1; }
+
+        System.out.println(numeroStella);
+
+        return numeroStella;
     }
 
     @Override

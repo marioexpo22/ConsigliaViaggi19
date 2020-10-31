@@ -11,11 +11,16 @@ import com.example.consigliaviaggi19.entity.Utente;
 import com.example.consigliaviaggi19.fragment.SchermataAccediFragment;
 import com.example.consigliaviaggi19.fragment.SchermataHomeFragment;
 
+import java.util.ArrayList;
+
 public class AccediController {
 
     SchermataAccediFragment schermataAccediFragment;
     Utente utente;
-    private UtenteDAO utenteDAO;
+    public UtenteDAO utenteDAO = new DAOFactory().ottieniUtenteDAO();
+
+    private String email;
+    private String password;
 
     public AccediController(SchermataAccediFragment schermataAccediFragment){ this.schermataAccediFragment = schermataAccediFragment; }
 
@@ -31,25 +36,15 @@ public class AccediController {
     }
 
     public void bottoneEffettuaAccessoPremuto(){
-        String email = null;
-        String password = null;
-        int contatoreErrori = 0;
-
-        if(schermataAccediFragment.usernameTextField.getText() != null && !schermataAccediFragment.usernameTextField.getText().toString().isEmpty()){
-            email = schermataAccediFragment.usernameTextField.getText().toString();
-        } else { contatoreErrori = contatoreErrori +1; }
-
-        if(schermataAccediFragment.passwordTextField.getText() != null && !schermataAccediFragment.passwordTextField.getText().toString().isEmpty()){
-            password = schermataAccediFragment.passwordTextField.getText().toString();
-        } else { contatoreErrori = contatoreErrori +1; }
-
-        utenteDAO = new DAOFactory(schermataAccediFragment.getContext()).ottieniUtenteDAO();
+        this.email = null;
+        this.password = null;
+        int contatoreErrori = controlloCampiVuoti();;
 
         if (contatoreErrori == 0){ ottieniUtenteAsync(email, password); }
         else { Toast.makeText(schermataAccediFragment.getActivity(),"Sono presenti campi vuoti", Toast.LENGTH_SHORT).show(); }
     }
 
-    private void ottieniUtenteAsync(String email, String password){
+    public void ottieniUtenteAsync(String email, String password){
         utente = Utente.getInstance();
 
         @SuppressLint("StaticFieldLeak")
@@ -96,6 +91,22 @@ public class AccediController {
         }
         CaricaUtente caricaUtente = new CaricaUtente(schermataAccediFragment.getContext());
         caricaUtente.execute();
+
+    }
+
+    public int controlloCampiVuoti(){
+
+        int contatoreErrori = 0;
+
+        if(schermataAccediFragment.usernameTextField.getText() != null && !schermataAccediFragment.usernameTextField.getText().toString().isEmpty()){
+            email = schermataAccediFragment.usernameTextField.getText().toString();
+        } else { contatoreErrori = contatoreErrori +1; }
+
+        if(schermataAccediFragment.passwordTextField.getText() != null && !schermataAccediFragment.passwordTextField.getText().toString().isEmpty()){
+            password = schermataAccediFragment.passwordTextField.getText().toString();
+        } else { contatoreErrori = contatoreErrori +1; }
+
+        return contatoreErrori;
     }
 
 }

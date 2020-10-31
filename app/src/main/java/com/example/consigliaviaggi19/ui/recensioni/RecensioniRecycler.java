@@ -30,7 +30,7 @@ public class RecensioniRecycler extends AsyncTask<String,Void,String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        recensioniDAO = new DAOFactory(recensioniController.getRecensioniStrutturaFragment().getContext()).ottieniRecensioniDAO();
+        recensioniDAO = new DAOFactory().ottieniRecensioniDAO();
         return recensioniDAO.ottieniRecensioniStruttura(struttura,
                 recensioniController.getRecensioniStrutturaFragment().filtroStelle.getRating(),
                 recensioniController.getRecensioniStrutturaFragment().filtroData.getSelectedItem().toString());

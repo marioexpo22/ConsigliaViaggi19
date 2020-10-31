@@ -18,6 +18,8 @@ public class RecensioniController {
     private Struttura struttura;
     private MainActivity mainActivity;
 
+    public RecensioniController(){}
+
     public RecensioniController(RecensioniStrutturaFragment recensioniStrutturaFragment){
         this.recensioniStrutturaFragment = recensioniStrutturaFragment;
     }
@@ -41,7 +43,7 @@ public class RecensioniController {
     }
 
     private void scriviUnaRecensioneButtonPremuto(){
-        if(Utente.getInstance().getNome() != null){
+        if(utenteLoggato()){
             recensioniStrutturaFragment.mainActivity.getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, RecensisciStrutturaFragment.newInstance(recensioniStrutturaFragment.struttura, recensioniStrutturaFragment.mainActivity, recensioniStrutturaFragment.schermataStrutturaFragment))
                     .commitNow();
@@ -49,6 +51,12 @@ public class RecensioniController {
             Toast.makeText(recensioniStrutturaFragment.getActivity(),"Devi prima effettuare il login", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public Boolean utenteLoggato(){
+        if (Utente.getInstance().getNome() != null) {
+            return true;
+        } else return false;
     }
 
     public RecensioniStrutturaFragment getRecensioniStrutturaFragment() { return recensioniStrutturaFragment; }

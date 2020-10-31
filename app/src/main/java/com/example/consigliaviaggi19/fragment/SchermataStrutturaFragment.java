@@ -35,6 +35,7 @@ public class SchermataStrutturaFragment extends Fragment {
 
     private final Struttura strutturaDaCaricare;
     public MainActivity mainActivity;
+    public int tornaAllaHome = 0;
 
     private SectionsPagerAdapter sectionsPagerAdapter;
 
@@ -46,6 +47,7 @@ public class SchermataStrutturaFragment extends Fragment {
         this.mainActivity = mainActivity;
         this.strutturaDaCaricare = strutturaDaCaricare;
     }
+
 
     @Nullable
     @Override
@@ -99,9 +101,17 @@ public class SchermataStrutturaFragment extends Fragment {
     }
 
     public void ricercaStrutturaButtonPremuto(){
-        mainActivity.getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, SchermataRicercaFragment.newInstance(mainActivity))
-                .commitNow();
+
+        if(tornaAllaHome == 0){
+            mainActivity.getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, SchermataRicercaFragment.newInstance(mainActivity))
+                    .commitNow();
+        } else if (tornaAllaHome == 1){
+            mainActivity.getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, SchermataHomeFragment.newInstance(mainActivity))
+                    .commitNow();
+        }
+
     }
 }
 

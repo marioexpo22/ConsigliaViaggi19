@@ -62,7 +62,7 @@ public class RecensisciController {
         if (recensisciStrutturaFragment.nomeCognome.isChecked()){ nomeCognomeNickname = utente.getNome() + " " + utente.getCognome(); }
         else { nomeCognomeNickname = utente.getNickname(); }
 
-        recensioniDAO = new DAOFactory(recensisciStrutturaFragment.getContext()).ottieniRecensioniDAO();
+        recensioniDAO = new DAOFactory().ottieniRecensioniDAO();
 
 
         if (contatoreErrori == 0){

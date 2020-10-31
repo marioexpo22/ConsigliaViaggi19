@@ -8,7 +8,7 @@ import com.example.consigliaviaggi19.DAO.implementazioni.UtenteDAOImplementazion
 public final class DAOFactory {
     Context context;
 
-    public DAOFactory(Context context){ this.context = context; }
+    public DAOFactory(){ }
 
     public UtenteDAO ottieniUtenteDAO(){
         return new UtenteDAOImplementazione();

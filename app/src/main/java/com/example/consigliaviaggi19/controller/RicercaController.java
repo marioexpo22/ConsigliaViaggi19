@@ -101,8 +101,4 @@ public class RicercaController {
                 .replace(R.id.container, SchermataHomeFragment.newInstance(schermataRicercaFragment.mainActivity))
                 .commitNow();
     }
-
-    private void aggiungiMarker(Struttura struttura, List<Marker> listaMarkers){
-
-    }
 }
